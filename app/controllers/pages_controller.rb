@@ -26,10 +26,10 @@ class PagesController < ApplicationController
   def json_search(user)
     user_search = URI.open("https://api.github.com/users/#{user}")
     json = JSON.parse(user_search.read)
-    json.values_at('name', 'bio', 'public_repos', 'followers', 'following', 'login', 'avatar_url')
+    json.values_at('public_repos', 'followers', 'following', 'login', 'avatar_url')
   end
 
   def score(results)
-    results[2] + results[3] * results[4]
+    results[0] + results[1] * results[2]
   end
 end

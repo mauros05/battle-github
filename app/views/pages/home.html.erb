@@ -6,7 +6,7 @@
 
 <div class="container py-5">
   <div class="row">
-    <div class="col-16 d-flex justify-content-center">
+    <div class="col-20 d-flex justify-content-center">
         <%= form_with url: "/search", method: :post do |form| %>
           <%= form.label :user1, "Search for:" %>
           <%= form.text_field :user1 %>
@@ -14,7 +14,7 @@
           <%= form.label :user2, "Search for:" %>
           <%= form.text_field :user2 %>
 
-          <%= form.submit "Search", class: "btn btn-primary" %>
+          <%= form.submit "Submit", class: "btn btn-primary", id: "button" %>
         <% end %>
     </div>
   </div>
@@ -25,20 +25,42 @@
 <div class="container py-5 px-4">
   <div class="row gx-5">
     <div class="col">
+
+      <div class="d-flex justify-content-center p-3 d-grid gap-3">
+        <div id="load">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+
       <% if params[:results1] && params[:results2]%>
         <div class="d-flex justify-content-center">
-
           <div class="p-3 d-grid gap-3">
-            <div class="card" style="width: 18rem;">
-              <img src="<%= params[:results1][6] %>" class="card-img-top" alt="">
+            <div class="card border border-dark" style="width: 18rem; border-radius: 4px;">
+              <img src="<%= params[:results1][4] %>" class="card-img-top" alt="">
               <div class="card-body">
-                <p class="fw-bold">User: <%= params[:results1][5]  %></p>
-                <p>Github User: <%= params[:results1][0] %></p>
-                <p>Repositories: <%= params[:results1][2] %> </p>
+                <p class="fw-bold">
+                  <i class="fas fa-user-circle"></i>
+                  User: <%= params[:results1][3]  %>
+                </p>
+                <p>
+                  <i class="fas fa-caret-down"></i>
+                  Followers: <%= params[:results1][1]  %>
+                </p>
+                <p>
+                  <i class="fas fa-angle-up"></i>
+                  Following: <%= params[:results1][2]  %>
+                </p>
+                <p>
+                  <i class="fas fa-file-code"></i>
+                  Repositories: <%= params[:results1][0] %>
+                </p>
                 <p>
                 <i class="fas fa-star"></i>
-                Score:
-                <%= params[:score1] %>
+                Score: <%= params[:score1] %>
                 </p>
               </div>
             </div>
@@ -46,16 +68,28 @@
 
 
           <div class="p-3 d-grid gap-3">
-            <div class="card" style="width: 18rem;">
-              <img src="<%= params[:results2][6] %>" class="card-img-top" alt="">
+            <div class="card border border-dark" style="width: 18rem; border-radius: 4px; ">
+              <img src="<%= params[:results2][4] %>" class="card-img-top" alt="" >
               <div class="card-body">
-                <p class="fw-bold">User: <%= params[:results2][5]  %></p>
-                <p class="fw-normal">Github User: <%= params[:results2][0] %></p>
-                <p class="fw-normal">Repositories: <%= params[:results2][2] %> </p>
+                <p class="fw-bold">
+                  <i class="fas fa-user-circle"></i>
+                  User: <%= params[:results2][3]  %>
+                </p>
+                <p>
+                  <i class="fas fa-caret-down"></i>
+                  Followers: <%= params[:results2][1]  %>
+                </p>
+                <p>
+                  <i class="fas fa-angle-up"></i>
+                  Following: <%= params[:results2][2]  %>
+                </p>
+                <p class="fw-normal">
+                  <i class="fas fa-file-code"></i>
+                  Repositories: <%= params[:results2][0] %>
+                </p>
                 <p>
                   <i class="fas fa-star"></i>
-                  Score:
-                  <%= params[:score2] %>
+                  Score: <%= params[:score2] %>
                 </p>
               </div>
             </div>
@@ -66,16 +100,16 @@
 
         <div class="container py-5 justify-content-center d-flex">
           <% if params[:score1].to_i > params[:score2].to_i %>
-            <h3 class="text-success"> <%= params[:results1][5] %> Wins 🤠🎉</h3>
+            <h3 class="fw-bold text-success"> <%= params[:results1][3] %> Wins 🤠🎉</h3>
           <%elsif params[:score1].to_i == params[:score2].to_i  %>
-            <h3>Both Have the same Score 🤯</h3>
+            <h3 class="fw-bold">Both Have the same Score 🤯</h3>
           <% else %>
-            <h3 class="text-success"> <%= params[:results2][5] %> Wins 🤠🎉</h3>
+            <h3 class="fw-bold text-success"> <%= params[:results2][3] %> Wins 🤠🎉</h3>
           <% end %>
         </div>
 
         <div class="container py-5 justify-content-center d-flex">
-          <%= link_to "Try again!", root_path, class:"btn btn-danger" %>
+          <%= link_to "Try again!", root_path, class:"btn btn-danger text-light" %>
         </div>
       <% else %>
         <div class="container py-5 justify-content-center d-flex">
