@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-center py-3">
-  <h1 class="fw-bold">Github Battle
+<div class="d-flex justify-content-center py-3" id="title-container">
+  <h1 id="title">Github Battle
   <i class="fab fa-github"></i>
   </h1>
 </div>
@@ -8,13 +8,13 @@
   <div class="row">
     <div class="col-20 d-flex justify-content-center">
         <%= form_with url: "/search", method: :post do |form| %>
-          <%= form.label :user1, "Search for:" %>
-          <%= form.text_field :user1 %>
+          <%= form.label :user1, "Search for User:" , class: "text-field"  %>
+          <%= form.text_field :user1, class: "text-search"  %>
 
-          <%= form.label :user2, "Search for:" %>
-          <%= form.text_field :user2 %>
+          <%= form.label :user2, "Search for User:" , class: "text-field"  %>
+          <%= form.text_field :user2, class: "text-search" %>
 
-          <%= form.submit "Submit", class: "btn btn-primary", id: "button" %>
+          <%= form.submit "Submit", class: "btn btn-primary", id: "btn-ghost" %>
         <% end %>
     </div>
   </div>
@@ -98,25 +98,31 @@
 
         </div>
 
-        <div class="container py-5 justify-content-center d-flex">
+        <div class="container py-5 justify-content-center d-flex" id="win-container">
           <% if params[:score1].to_i > params[:score2].to_i %>
-            <h3 class="fw-bold text-success"> <%= params[:results1][3] %> Wins 🤠🎉</h3>
+            <h3 class="text-win text-success"> <%= params[:results1][3].upcase %> Wins 🤠🎉</h3>
           <%elsif params[:score1].to_i == params[:score2].to_i  %>
-            <h3 class="fw-bold">Both Have the same Score 🤯</h3>
+            <h3 class="text-win">Both Have the same Score 🤯</h3>
           <% else %>
-            <h3 class="fw-bold text-success"> <%= params[:results2][3] %> Wins 🤠🎉</h3>
+            <h3 class="text-win text-success"> <%= params[:results2][3].upcase %> Wins 🤠🎉</h3>
           <% end %>
         </div>
 
         <div class="container py-5 justify-content-center d-flex">
-          <%= link_to "Try again!", root_path, class:"btn btn-danger text-light" %>
+          <%= link_to "Try again!", root_path, id: "btn-ghost" %>
         </div>
+
       <% else %>
         <div class="container py-5 justify-content-center d-flex">
-          <h2 class="fw-bold text-danger"><%= params[:messeage] %> </h2>
+          <h2 class="text-danger text-win"><%= params[:messeage]%> </h2>
         </div>
       <% end %>
 
     </div>
   </div>
+</div>
+
+
+<div class="container py-5" style="position: relative;  top: 400px; left:450px">
+  <p>Made with  ❤️  by Mauricio Gutierrez ☄️ - Version 1.1</p>
 </div>

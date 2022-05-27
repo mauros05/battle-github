@@ -13,6 +13,46 @@
 @import "pages/index";
 
 
+#title {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 50px;
+}
+
+#title-container {
+  font-size: 40px;
+}
+
+.text-win {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 30px;
+}
+
+#btn-ghost {
+  color: white;
+  border: 1px solid white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  background-color: black;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+#btn-ghost:hover {
+  background-color: gray;
+}
+
+
+.text-field {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+}
+
+.text-search{
+  background-color: rgb(255, 255, 255);
+  border-color: black;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;
